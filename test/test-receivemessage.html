@@ -1,0 +1,20 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+      const socket = io('ws://localhost:3000', {
+        transports: ['websocket'],
+      })
+      socket.on('message', function (data) {
+        let node = document.createElement('LI')
+        let textnode = document.createTextNode(JSON.stringify(data))
+        node.appendChild(textnode)
+        document.getElementById('event-messages').appendChild(node)
+      })
+    </script>
+</head>
+
+<body>
+<ul id="event-messages"></ul>
+</body>
+</html>
